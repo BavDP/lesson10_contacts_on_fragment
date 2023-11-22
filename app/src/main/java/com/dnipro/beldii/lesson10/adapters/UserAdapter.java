@@ -20,8 +20,8 @@ import com.dnipro.beldii.lesson10.model.User;
 import java.util.ArrayList;
 
 class UserDiffCallback extends DiffUtil.Callback {
-    private ArrayList<User> oldUsers;
-    private ArrayList<User> newUser;
+    private final ArrayList<User> oldUsers;
+    private final ArrayList<User> newUser;
 
     public UserDiffCallback(ArrayList<User> oldUsers, ArrayList<User> newUser) {
         this.oldUsers = oldUsers;
@@ -40,7 +40,7 @@ class UserDiffCallback extends DiffUtil.Callback {
 
     @Override
     public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
-        return oldUsers.get(oldItemPosition).getId() == newUser.get(newItemPosition).getId() ;
+        return oldUsers.get(oldItemPosition).getId().equals(newUser.get(newItemPosition).getId()) ;
     }
 
     @Override
@@ -54,10 +54,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ContactHolder>
     private ArrayList<User> users;
     private UserAdapterClickListener itemViewClickListener;
 
-    public UserAdapterClickListener getItemViewClickListener() {
-        return itemViewClickListener;
-    }
-
     public void setItemViewClickListener(UserAdapterClickListener itemViewClickListener) {
         this.itemViewClickListener = itemViewClickListener;
     }
@@ -70,19 +66,14 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ContactHolder>
     }
 
     protected static class ContactHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private View itemView;
+        private final View itemView;
         private TextView nameTextView;
         private TextView companyTextView;
         private ImageButton deleteBtn;
 
         private ImageButton editBtn;
         private ImageView photoView;
-        private Drawable photoDrawable;
         private UserAdapterClickListener clickListener;
-
-        public UserAdapterClickListener getClickListener() {
-            return clickListener;
-        }
 
         public void setClickListener(UserAdapterClickListener clickListener) {
             this.clickListener = clickListener;

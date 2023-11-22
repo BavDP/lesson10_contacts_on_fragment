@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements UserDataContainer
         return this.users;
     }
 
-    private ArrayList<User> getUsersFromJson() {
+    private void getUsersFromJson() {
         InputStream fruitJsonStream = getResources().openRawResource(R.raw.contacts);
         JsonReader jsonReader = new JsonReader(fruitJsonStream);
         GsonBuilder gsonBuilder = new GsonBuilder();
@@ -62,7 +62,6 @@ public class MainActivity extends AppCompatActivity implements UserDataContainer
         Type contactType = new TypeToken<Collection<User>>(){}.getType();
         Collection<User> users = gson.fromJson(jsonReader.getAsString(), contactType);
         this.users = new ArrayList<>(users);
-        return this.users;
     }
 
 }

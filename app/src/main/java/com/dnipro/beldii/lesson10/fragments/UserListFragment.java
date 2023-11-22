@@ -93,8 +93,7 @@ public class UserListFragment extends Fragment {
 
     private void deleteContactFromList(View view) {
         User user = (User) view.getTag();
-        ArrayList<User> newUsers = new ArrayList<>();
-        newUsers.addAll(this.users);
+        ArrayList<User> newUsers = new ArrayList<>(this.users);
         if (newUsers.remove(user)) {
             this.userAdapter.setContacts(newUsers);
             this.users = newUsers;
@@ -129,7 +128,7 @@ public class UserListFragment extends Fragment {
                 if (user != null) {
                     ArrayList<User> newUsers = new ArrayList<>();
                     newUsers.addAll(users);
-                    List<User> editedUser = newUsers.stream().filter(u -> u.getId() == user.getId()).collect(Collectors.toList());
+                    List<User> editedUser = newUsers.stream().filter(u -> u.getId().equals(user.getId())).collect(Collectors.toList());
                     if (editedUser.isEmpty()) {
                         newUsers.add(0, user);
                     } else {

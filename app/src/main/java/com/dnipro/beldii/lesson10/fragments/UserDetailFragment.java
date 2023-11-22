@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.dnipro.beldii.lesson10.R;
 import com.dnipro.beldii.lesson10.databinding.FragmentUserDetailBinding;
 import com.dnipro.beldii.lesson10.helpers.AsyncPhotoLoader;
 import com.dnipro.beldii.lesson10.model.User;
@@ -18,7 +17,7 @@ import com.dnipro.beldii.lesson10.model.User;
 public class UserDetailFragment extends Fragment {
     private FragmentUserDetailBinding binding;
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentUserDetailBinding.inflate(inflater);
         return binding.getRoot();
